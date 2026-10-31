@@ -1,0 +1,17 @@
+package com.fooddelivery.platform.features.restaurants;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+
+public record RestaurantRequest(
+        @NotBlank @Size(max = 100) String name,
+        @Size(max = 500) String description,
+        @NotBlank @Size(max = 60) String cuisineType,
+        @NotBlank @Size(max = 200) String address,
+        @NotBlank @Size(max = 80) String city,
+        @Pattern(regexp = "^$|^[+0-9() .-]{7,30}$", message = "must be a valid phone number")
+        String phoneNumber,
+        @Size(max = 500) String imageUrl,
+        Boolean active) {
+}
